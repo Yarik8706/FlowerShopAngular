@@ -1,0 +1,44 @@
+<mat-toolbar class="custom-navbar start-navbar">
+  <div class="logo">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>flower</mat-icon>
+    </button>
+    <span routerLink="">Цветочный магазин</span>
+  </div>
+  <div class="row align-items-center" style="margin-right: 30px" *ngIf="!SmallScreen()">
+    <div class="col-ml px-5">
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_143076.png&f=1&nofb=1"
+        alt=""
+      /><h3>Адрес</h3>
+<!--      <input class="form-control mr-1 edit-input" *ngIf="isEdit" [(ngModel)]="address" placeholder="Адрес">-->
+      <span>{{address}}</span>
+    </div>
+    <div class="col-ml px-5" *ngIf="!MiddleScreen()">
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_143076.png&f=1&nofb=1"
+        alt=""
+      /><h3>
+        Телефон
+      </h3>
+<!--      <input class="form-control mr-1 edit-input" *ngIf="isEdit" [(ngModel)]="telephone" placeholder="Телефон">-->
+      <span>{{telephone}}</span>
+    </div>
+    <div class="col-ml px-5" *ngIf="!BigScreen()">
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_143076.png&f=1&nofb=1"
+        alt=""
+      /><h3>Часы работы</h3>
+<!--      <input class="form-control mr-1 edit-input" *ngIf="isEdit" [(ngModel)]="timeWork" placeholder="Часы работы">-->
+      <span class="justify-content-center">{{timeWork}}</span>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-toolbar color="accent" class="custom-navbar">
+  <div class="mat-toolbar-row div-center">
+    <button mat-raised-button color="accent" routerLink="aboutProject">Главная</button>
+    <button mat-raised-button color="accent" routerLink="menu">Товары</button>
+    <button mat-raised-button color="accent" routerLink="goalAndTasks">Галерея</button>
+    <button mat-raised-button color="accent" routerLink="otherInfo">О нас</button>
+  </div>
+</mat-toolbar>

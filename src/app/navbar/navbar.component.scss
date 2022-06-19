@@ -1,0 +1,16 @@
+.custom-navbar{
+  .logo{
+    cursor: pointer;
+  }
+  .mat-raised-button{
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+  }
+}
+.start-navbar{
+  height: 100px !important;
+  background-color: white;
+}
+//@include small-display{
+//
+//}

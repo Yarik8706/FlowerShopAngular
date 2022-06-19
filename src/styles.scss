@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.div-left{
+  margin-right: 10px;
+  margin-left: 10px;
+  justify-content: left;
+}
+.div-center{
+  justify-content: center;
+}
+
+.div-right{
+  justify-content: right;
+}
+
+@mixin small-display{
+  @media (max-width: 490px){
+    @content;
+  }
+}
+@mixin middle-display{
+  @media (max-width: 720px){
+    @content;
+  }
+}
+@mixin big-display{
+  @media (min-width: 1000px) {
+    @content;
+  }
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
