@@ -1,0 +1,170 @@
+<div class="container cards-group">
+  <ul class="accordion">
+    <li class="accordion-item">
+      <input type="checkbox" class="accordion-toggle" name="accordion-01" id="toggle-01" hidden>
+      <label class="accordion-trigger main-accordion-trigger" for="toggle-01">
+        <div class="title-container">
+          <span class="title">Каталог...</span>
+        </div>
+      </label>
+      <div class="accordion-container">
+        <ul class="accordion">
+          <li class="accordion-item">
+            <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle2" hidden>
+            <label class="accordion-trigger" for="toggle2">
+              <div class="title-container">
+                <span class="title">Цветы...</span>
+              </div>
+            </label>
+            <div class="accordion-container">
+              <span class="accordion-trigger" [routerLink]="''">Название цветка</span>
+              <span class="accordion-trigger" [routerLink]="''">Название цветка</span>
+              <span class="accordion-trigger" [routerLink]="''">Название цветка</span>
+            </div>
+          </li>
+        </ul>
+        <ul class="accordion">
+          <li class="accordion-item">
+            <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle3" hidden>
+            <label class="accordion-trigger" for="toggle3">Воздушные шарики...</label>
+            <div class="accordion-container">
+              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+            </div>
+          </li>
+        </ul>
+        <span class="accordion-trigger" [routerLink]="'about-us'">Плюшевые мишки</span>
+        <span class="accordion-trigger" [routerLink]="''">Сладости</span>
+      </div>
+    </li>
+  </ul>
+  <h1 class="color-title">ХИТЫ ПРОДАЖ</h1>
+  <div class="row button-group" *ngIf="SmallScreen()">
+    <button mat-raised-button color="accent" (click)="isOpenFilterDialog = true">Фильтры</button>
+    <button mat-raised-button color="accent">Сортировка</button>
+  </div>
+  <div class="row">
+    <div class="list-group col-2 left-menu" *ngIf="!SmallScreen()">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Состав букета</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox>Розы</mat-checkbox>
+            <mat-checkbox>Лилии</mat-checkbox>
+            <mat-checkbox>Тюльпаны</mat-checkbox>
+            <mat-checkbox>Хризантемы</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Для кого</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox>Коллеге</mat-checkbox>
+            <mat-checkbox>Маме</mat-checkbox>
+            <mat-checkbox>Подруге</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>По цвету</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox>Синии</mat-checkbox>
+            <mat-checkbox>Красные</mat-checkbox>
+            <mat-checkbox>Разноцветные</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Размер букета</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox>Маленький</mat-checkbox>
+            <mat-checkbox>Стандарт</mat-checkbox>
+            <mat-checkbox>Большой</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="col px-4">
+      <div class="row" [ngStyle]="SmallScreen() ? {'justify-content' : 'center'} : {}">
+        <app-information-card title="Букет<<Розовая симфония>>" price="3000р" img="https://gorcveti.tomsk.ru/assets/cache_image/products/1613/1635401019f61a74de-e9ec-48e9-b9ca-7675f1d33399_1000x0_07e.jpg"></app-information-card>
+        <app-information-card title="Букет<<Интрига>>" price="2000р" img="https://gorcveti.tomsk.ru/assets/cache_image/products/1618/1636514688b04c509d-f48d-4956-aadb-db8b0e6c5aba_653x653_497.jpg"></app-information-card>
+        <app-information-card title="Букет<<Нежное послание>>" price="4500р" img="https://gorcveti.tomsk.ru/assets/cache_image/products/1619/1636515076d064215c-82a3-4807-a648-6b42419ca113_653x653_497.jpg"></app-information-card>
+        <app-information-card title="Букет<<Цветочный вальс>>" price="2500р" img="https://gorcveti.tomsk.ru/assets/cache_image/products/1616/163651371090508334-198c-4530-8b00-5c3320ecbcba_653x653_497.jpg"></app-information-card>
+        <app-information-card title="Букет<<Радость встречи>>" price="4000р" img="https://gorcveti.tomsk.ru/assets/cache_image/products/1647/163703761560b8d082-eb4a-4c92-bd31-663177049576_653x653_497.jpg"></app-information-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="filter-menu" *ngIf="isOpenFilterDialog">
+  <div class="container">
+    <div class="row navbar">
+      <div class="col"><h1 class="title">Фильтры</h1></div>
+      <div class="col exit-button-container">
+        <button mat-icon-button class="exit-icon" (click)="isOpenFilterDialog = false"></button>
+      </div>
+    </div>
+    <div class="list-group col left-menu">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Состав букета</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox class="row">Розы</mat-checkbox>
+            <mat-checkbox class="row">Лилии</mat-checkbox>
+            <mat-checkbox class="row">Тюльпаны</mat-checkbox>
+            <mat-checkbox class="row">Хризантемы</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Для кого</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox class="row">Коллеге</mat-checkbox>
+            <mat-checkbox class="row">Маме</mat-checkbox>
+            <mat-checkbox class="row">Подруге</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>По цвету</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox class="row">Синии</mat-checkbox>
+            <mat-checkbox class="row">Красные</mat-checkbox>
+            <mat-checkbox class="row">Разноцветные</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Размер букета</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="col">
+            <mat-checkbox class="row">Маленький</mat-checkbox>
+            <mat-checkbox class="row">Стандарт</mat-checkbox>
+            <mat-checkbox class="row">Большой</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

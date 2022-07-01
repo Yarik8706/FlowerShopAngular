@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {UnitComponent} from "../unit/unit.component";
 
 @Component({
@@ -8,8 +8,8 @@ import {UnitComponent} from "../unit/unit.component";
 })
 export class FooterComponent extends UnitComponent {
 
-  constructor() {
-    super();
+  constructor(private injector: Injector) {
+    super(injector);
   }
 
   ngOnInit(): void {

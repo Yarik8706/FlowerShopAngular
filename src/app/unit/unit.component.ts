@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
+import {InformationCardsService} from "../information-cards.service";
 
 @Component({
   selector: 'app-unit',
-  templateUrl: './unit.component.html',
-  styleUrls: ['./unit.component.scss']
+  template: ``
 })
 export class UnitComponent implements OnInit {
 
-  constructor() { }
+  public informationCardsService: InformationCardsService;
+
+  constructor(injector: Injector)
+  {
+    this.informationCardsService = injector.get(InformationCardsService)
+  }
 
   ngOnInit(): void {
   }
@@ -17,11 +22,11 @@ export class UnitComponent implements OnInit {
   }
 
   public MiddleScreen(): boolean {
-    return window.screen.width <= 720;
+    return window.screen.width <= 1514;
   }
 
   public BigScreen(): boolean {
-    return window.screen.width <= 1040;
+    return window.screen.width > 1514;
   }
 
   public Screen(): number{

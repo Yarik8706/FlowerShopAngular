@@ -1,44 +1,84 @@
 <mat-toolbar class="custom-navbar start-navbar">
   <div class="logo">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>flower</mat-icon>
-    </button>
-    <span routerLink="">Цветочный магазин</span>
+    <img src="../../assets/logo-min.jpg" alt="" routerLink="">
   </div>
-  <div class="row align-items-center" style="margin-right: 30px" *ngIf="!SmallScreen()">
-    <div class="col-ml px-5">
-      <img
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_143076.png&f=1&nofb=1"
-        alt=""
-      /><h3>Адрес</h3>
+  <div class="row content-group-right" *ngIf="!MiddleScreen()">
+    <div class="col-ml px-5 div-right">
+      <div class="row">
+        <mat-icon aria-hidden="false" class="navbar-icon">search</mat-icon>
+        <h3 class="px-1">Адрес</h3>
+      </div>
 <!--      <input class="form-control mr-1 edit-input" *ngIf="isEdit" [(ngModel)]="address" placeholder="Адрес">-->
       <span>{{address}}</span>
     </div>
-    <div class="col-ml px-5" *ngIf="!MiddleScreen()">
-      <img
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_143076.png&f=1&nofb=1"
-        alt=""
-      /><h3>
-        Телефон
-      </h3>
+    <div class="col-ml px-5 div-right" *ngIf="!SmallScreen()">
+      <div class="row">
+        <mat-icon aria-hidden="false" class="navbar-icon">telephone</mat-icon>
+        <h3 class="px-1">Телефон</h3>
+      </div>
 <!--      <input class="form-control mr-1 edit-input" *ngIf="isEdit" [(ngModel)]="telephone" placeholder="Телефон">-->
       <span>{{telephone}}</span>
     </div>
-    <div class="col-ml px-5" *ngIf="!BigScreen()">
-      <img
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_143076.png&f=1&nofb=1"
-        alt=""
-      /><h3>Часы работы</h3>
+    <div class="col-ml px-5 div-right" *ngIf="!SmallScreen()">
+      <div class="row">
+        <mat-icon aria-hidden="false" class="navbar-icon">schedule</mat-icon>
+        <h3 class="px-1">Прием заказов {{timeWork}}</h3>
+      </div>
 <!--      <input class="form-control mr-1 edit-input" *ngIf="isEdit" [(ngModel)]="timeWork" placeholder="Часы работы">-->
-      <span class="justify-content-center">{{timeWork}}</span>
+      <span>Доставка с 8 до 21</span>
     </div>
   </div>
 </mat-toolbar>
-<mat-toolbar color="accent" class="custom-navbar">
-  <div class="mat-toolbar-row div-center">
-    <button mat-raised-button color="accent" routerLink="aboutProject">Главная</button>
-    <button mat-raised-button color="accent" routerLink="menu">Товары</button>
-    <button mat-raised-button color="accent" routerLink="goalAndTasks">Галерея</button>
-    <button mat-raised-button color="accent" routerLink="otherInfo">О нас</button>
+<mat-toolbar color="accent" class="custom-navbar end-navbar">
+  <div class="div-center" [class.mat-toolbar-row]="!SmallScreen()" style="width: 100%">
+    <p class="main-title" style="text-align: center">Краткое описание</p>
   </div>
 </mat-toolbar>
+<div class="flying-button" *ngIf="SmallScreen() && !isOpenMenu">
+  <button mat-fab color="accent" (click)="isOpenMenu = true">
+    <mat-icon>menu</mat-icon>
+  </button>
+</div>
+<div class="left-menu" *ngIf="isOpenMenu && SmallScreen()">
+  <div class="main">
+      <button mat-fab color="accent" (click)="isOpenMenu = false" class="exit-icon">
+        <mat-icon>clear</mat-icon>
+      </button>
+      <span class="accordion-trigger" [routerLink]="''">Пионы</span>
+      <span class="accordion-trigger" [routerLink]="''">Акции</span>
+      <span class="accordion-trigger" [routerLink]="''">Цветы до 2000р.</span>
+      <span class="accordion-trigger" [routerLink]="''">Эко-букеты</span>
+      <span class="accordion-trigger" [routerLink]="''">Пионы</span>
+      <span class="accordion-trigger" [routerLink]="''">Розы</span>
+      <ul class="accordion">
+        <li class="accordion-item">
+          <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle2" hidden>
+          <label class="accordion-trigger" for="toggle2">
+            <div class="title-container">
+              <span class="title">Букеты...</span>
+            </div>
+          </label>
+          <div class="accordion-container">
+            <span class="accordion-trigger" [routerLink]="''">Сборные букеты</span>
+            <span class="accordion-trigger" [routerLink]="''">Премиум букеты</span>
+            <span class="accordion-trigger" [routerLink]="''">Монобукеты</span>
+          </div>
+        </li>
+      </ul>
+      <ul class="accordion">
+        <li class="accordion-item">
+          <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle3" hidden>
+          <label class="accordion-trigger" for="toggle3">Воздушные шарики...</label>
+          <div class="accordion-container">
+            <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+            <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+            <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+          </div>
+        </li>
+      </ul>
+      <span class="accordion-trigger" [routerLink]="'about-us'" (click)="isOpenMenu = false">О нас</span>
+      <span class="accordion-trigger" [routerLink]="''">Доставка</span>
+      <span class="accordion-trigger" [routerLink]="''">{{telephone}}</span>
+  </div>
+  <div class="background" (click)="isOpenMenu = false" (mousewheel)="isOpenMenu = false"></div>
+</div>

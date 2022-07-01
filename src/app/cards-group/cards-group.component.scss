@@ -1,42 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../../styles";
 
-$accent-color: #d1b3ff;
-$black-accent-color: #8e5ad9;
 
-button[color="accent"]{
-  background-color: $accent-color !important;
-}
-
-.color-title{
-  color: $accent-color;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 20px;
-}
-
-.main-title{
-  text-align: center;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 25px;
-}
-
-.div-left{
-  margin-right: 10px;
-  margin-left: 10px;
-  justify-content: left;
-}
-
-.div-center{
-  justify-content: center;
-}
-
-.div-right{
-  justify-content: right;
-}
 
 .accordion-trigger {
   display: block;
@@ -50,18 +14,15 @@ button[color="accent"]{
 
 /* Компоненты аккордеона */
 .accordion {
-  margin: 0;
   padding: 0;
   list-style: none;
 
   .accordion-item {
     border-bottom: 1px solid #5a95fd;
-    width: 100%;
   }
 
   .accordion-item:last-of-type {
     border-bottom: none;
-    width: 100%;
   }
 
   /* Элемент label который запускает открыть/закрыть */
@@ -72,6 +33,12 @@ button[color="accent"]{
 
     .col > .icon{
       width: 100%;
+    }
+
+    .icon{
+      display: grid;
+      justify-content: right !important;
+      color: white;
     }
   }
 
@@ -134,23 +101,79 @@ button[color="accent"]{
   }
 }
 
-@mixin small-display{
-  @media (max-width: 490px){
-    @content;
+.cards-group{
+  margin-top: 20px;
+}
+
+.color-title{
+  text-align: center;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.vertical-menu {
+  width: 100px !important; /* Set a width if you like */
+}
+
+.exit-icon{
+  background:
+    url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Fexit-button-icon-png-9.png&f=1&nofb=1");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+}
+
+.left-menu{
+  mat-accordion{
+    margin: 5px;
+    width: 190px;
   }
 }
 
-@mixin middle-display{
-  @media (max-width: 1514px){
-    @content;
+.button-group{
+  justify-content: center;
+  height: 50px;
+  button{
+    margin: 5px;
   }
+  margin-bottom: 10px;
 }
 
-@mixin big-display{
-  @media (min-width: 1514px) {
-    @content;
+.filter-menu {
+  .navbar{
+    box-shadow: gray;
+    background-color: white;
+    img{
+      width: 50px;
+      height: 50px;
+    }
   }
+  .exit-button-container{
+    justify-content: right;
+  }
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* сдвигаем (прячем) панель относительно левого края страницы */
+  /* плавный переход смещения панели */
+  -webkit-transition: left 0.3s;
+  -moz-transition: left 0.3s;
+  transition: left 0.3s;
+  /* определяем цвет фона панели */
+  background: ghostwhite;
+  /* поверх других элементов */
+  z-index: 100;
 }
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@include small-display{
+  .left-menu{
+    mat-accordion{
+      margin: 5px;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "flowershopangular": {
+      "hosting": {
+        "FlowerShopAngular": [
+          "flowershopangular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "flowershopangular"
+  }
+}

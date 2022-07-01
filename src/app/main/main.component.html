@@ -1,1 +1,16 @@
-<p>main works!</p>
+<ngb-carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus">
+  <ng-template ngbSlide *ngFor="let img of images; index as i">
+    <div class="carousel-caption">
+      <h4>{{img.title}}</h4>
+      <p>{{img.shortDescription}}</p>
+    </div>
+    <a href="{{img.img}}" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="picsum-img-wrapper">
+        <img [src]="img.img" alt="{{img.shortDescription}}">
+      </div>
+    </a>
+  </ng-template>
+</ngb-carousel>
+<div class="container main">
+  <app-cards-group></app-cards-group>
+</div>

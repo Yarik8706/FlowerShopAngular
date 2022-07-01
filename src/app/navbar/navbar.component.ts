@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {UnitComponent} from "../unit/unit.component";
 
 @Component({
@@ -7,13 +7,13 @@ import {UnitComponent} from "../unit/unit.component";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent extends UnitComponent {
-  address: string = "street";
-  telephone: string = "+79008007788";
+  address: string = "Калининград, г. Светлогорск, Яблоневая д.7";
+  telephone: string = "+79003530891";
   timeWork: string = "24/7";
-  companyName: string = "Название компании";
+  isOpenMenu: boolean;
 
-  constructor() {
-    super();
+  constructor(private injector: Injector) {
+    super(injector);
   }
 
   ngOnInit(): void {
