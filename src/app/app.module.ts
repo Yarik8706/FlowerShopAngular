@@ -25,7 +25,16 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { CardsGroupComponent } from './cards-group/cards-group.component';
 import { AllProductsComponent } from './all-products/all-products.component';
 import {InformationCardsService} from "./information-cards.service";
-import {ScrollingModule} from "@angular/cdk/scrolling";
+import { TransitionToInformationComponent } from './transition-to-information/transition-to-information.component';
+import { InformationProductComponent } from './information-product/information-product.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+
+// TODO host firebase deploy --only hosting:florans39
 
 const routes: Routes = [
   { path: '', component: MainComponent},
@@ -51,26 +60,32 @@ const routes: Routes = [
     InformationCardComponent,
     AboutUsComponent,
     CardsGroupComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    TransitionToInformationComponent,
+    InformationProductComponent,
+    AdminPanelComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        RouterModule.forRoot(routes),
-        FormsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatCardModule,
-        MatTreeModule,
-        MatExpansionModule,
-        MatCheckboxModule,
-        MatSidenavModule,
-        MatListModule,
-        NgbModule,
-        ScrollingModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
+    FormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatTreeModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatListModule,
+    NgbModule,
+    MatSelectModule,
+    MatOptionModule
+  ],
   bootstrap: [AppComponent],
   providers: [InformationCardsService]
 })

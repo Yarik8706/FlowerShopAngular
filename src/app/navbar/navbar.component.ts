@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import {UnitComponent} from "../unit/unit.component";
 
 @Component({
@@ -16,7 +16,13 @@ export class NavbarComponent extends UnitComponent {
     super(injector);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  updateMenuSetting(): void{
+    let body = document.getElementsByTagName("body")[0]
+    body.style.overflow = 'scrolling';
+    if(this.isOpenMenu) {
+      body.style.overflow = 'hidden';
+    }
+  }
 }

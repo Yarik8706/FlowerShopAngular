@@ -1,7 +1,20 @@
+<div class="navbar-padding-top" *ngIf="SmallScreen()"></div>
 <mat-toolbar class="custom-navbar start-navbar">
+  <button mat-icon-button (click)="isOpenMenu = !isOpenMenu; updateMenuSetting()" *ngIf="SmallScreen()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="SmallScreen()">
+    <mat-icon>phone</mat-icon>
+  </button>
   <div class="logo">
     <img src="../../assets/logo-min.jpg" alt="" routerLink="">
   </div>
+  <button mat-icon-button color="warn" *ngIf="SmallScreen()">
+    <mat-icon>favorite_border</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="SmallScreen()">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
   <div class="row content-group-right" *ngIf="!MiddleScreen()">
     <div class="col-ml px-5 div-right">
       <div class="row">
@@ -34,16 +47,9 @@
     <p class="main-title" style="text-align: center">Краткое описание</p>
   </div>
 </mat-toolbar>
-<div class="flying-button" *ngIf="SmallScreen() && !isOpenMenu">
-  <button mat-fab color="accent" (click)="isOpenMenu = true">
-    <mat-icon>menu</mat-icon>
-  </button>
-</div>
 <div class="left-menu" *ngIf="isOpenMenu && SmallScreen()">
   <div class="main">
-      <button mat-fab color="accent" (click)="isOpenMenu = false" class="exit-icon">
-        <mat-icon>clear</mat-icon>
-      </button>
+    <div class="navbar-padding-top" *ngIf="SmallScreen()"></div>
       <span class="accordion-trigger" [routerLink]="''">Пионы</span>
       <span class="accordion-trigger" [routerLink]="''">Акции</span>
       <span class="accordion-trigger" [routerLink]="''">Цветы до 2000р.</span>
@@ -76,9 +82,9 @@
           </div>
         </li>
       </ul>
-      <span class="accordion-trigger" [routerLink]="'about-us'" (click)="isOpenMenu = false">О нас</span>
+      <span class="accordion-trigger" [routerLink]="'about-us'" (click)="isOpenMenu = false; updateMenuSetting()">О нас</span>
       <span class="accordion-trigger" [routerLink]="''">Доставка</span>
       <span class="accordion-trigger" [routerLink]="''">{{telephone}}</span>
   </div>
-  <div class="background" (click)="isOpenMenu = false" (mousewheel)="isOpenMenu = false"></div>
+  <div class="background" (click)="isOpenMenu = false; updateMenuSetting()" (mousewheel)="isOpenMenu = false"></div>
 </div>

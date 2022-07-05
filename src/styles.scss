@@ -1,10 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "colors";
 
-$accent-color: #d1b3ff;
-$black-accent-color: #8e5ad9;
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 button[color="accent"]{
   background-color: $accent-color !important;
@@ -25,113 +35,20 @@ button[color="accent"]{
 }
 
 .div-left{
+  display: flex;
   margin-right: 10px;
   margin-left: 10px;
   justify-content: left;
 }
 
 .div-center{
+  display: flex;
   justify-content: center;
 }
 
 .div-right{
+  display: flex;
   justify-content: right;
-}
-
-.accordion-trigger {
-  display: block;
-  background-color: $accent-color;
-  font-weight: normal;
-  color: white;
-  cursor: pointer;
-  padding: 1.2em;
-  margin: 0;
-}
-
-/* Компоненты аккордеона */
-.accordion {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  .accordion-item {
-    border-bottom: 1px solid #5a95fd;
-    width: 100%;
-  }
-
-  .accordion-item:last-of-type {
-    border-bottom: none;
-    width: 100%;
-  }
-
-  /* Элемент label который запускает открыть/закрыть */
-
-
-  .title-container{
-    width: 100%;
-
-    .col > .icon{
-      width: 100%;
-    }
-  }
-
-  /* эти элементы radio/checkbox всегда должны быть скрыты */
-  .accordion-toggle {
-    position: absolute;
-    display: none;
-  }
-
-  .accordion-toggle:checked ~ .icon {
-    transform: rotate(90deg) !important;
-  }
-
-  /* скрытое содержание аккордеона */
-  .accordion-container {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    background-color: #ddd;
-    color: #444;
-  }
-
-  .main-accordion-trigger{
-    background-color: $black-accent-color !important;
-  }
-
-  /* когда переключатель checked на radio/checkbox, показать содержимое аккордеона */
-  .accordion-toggle:checked ~ .accordion-container {
-    position: static;
-    overflow: visible;
-    clip: auto;
-    margin: auto;
-    width: auto;
-    height: auto;
-    /* задержка появления  функция анимации */
-    -webkit-animation:fadeIn ease-in 0.5s;
-    -moz-animation:fadeIn ease-in 0.5s;
-    animation:fadeIn ease-in 0.5s;
-  }
-
-  /* анимация при появлении блоков с содержанием */
-  @-moz-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1 }
-  }
-
-  @-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1 }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1 }
-  }
 }
 
 @mixin small-display{
