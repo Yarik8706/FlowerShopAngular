@@ -33,6 +33,10 @@ import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatMenuModule} from "@angular/material/menu";
+import { GetUserImageComponent } from './get-user-image/get-user-image.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 // TODO host firebase deploy --only hosting:florans39
 
@@ -47,6 +51,7 @@ const routes: Routes = [
       component: CardsGroupComponent
     }]
   },
+  { path: 'admin-panel', component: AdminPanelComponent},
   { path: '**', component: MainComponent}
 ];
 
@@ -63,7 +68,8 @@ const routes: Routes = [
     AllProductsComponent,
     TransitionToInformationComponent,
     InformationProductComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    GetUserImageComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +90,10 @@ const routes: Routes = [
     MatListModule,
     NgbModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatInputModule,
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent],
   providers: [InformationCardsService]

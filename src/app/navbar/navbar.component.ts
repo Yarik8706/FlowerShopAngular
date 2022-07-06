@@ -20,9 +20,10 @@ export class NavbarComponent extends UnitComponent {
 
   updateMenuSetting(): void{
     let body = document.getElementsByTagName("body")[0]
-    body.style.overflow = 'scrolling';
     if(this.isOpenMenu) {
       body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = 'scroll';
     }
   }
 }

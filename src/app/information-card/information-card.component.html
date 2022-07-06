@@ -1,11 +1,15 @@
-<mat-card class="example-card">
+<mat-card class="information-card">
   <img mat-card-image
-       src="{{img}}"
+       class="information-card-image"
+       [src]="img"
        alt="">
   <mat-card-header>
     <mat-card-title>{{title}}</mat-card-title>
     <mat-card-subtitle>{{price}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-actions><button mat-button>Заказать</button></mat-card-actions>
+  <mat-card-actions>
+    <button mat-button>Заказать</button>
+    <button mat-button>Подробности</button>
+  </mat-card-actions>
 </mat-card>
 

@@ -1,6 +1,9 @@
+@import "colors";
+
 .accordion-trigger {
   display: block;
   background-color: $accent-color;
+  border-top: white solid 1px;
   font-weight: normal;
   color: white;
   cursor: pointer;
@@ -13,6 +16,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  border-top: white solid 1px;
 
   .accordion-item {
     border-bottom: 1px solid #5a95fd;
@@ -25,24 +29,10 @@
   }
 
   /* Элемент label который запускает открыть/закрыть */
-
-
-  .title-container{
-    width: 100%;
-
-    .col > .icon{
-      width: 100%;
-    }
-  }
-
   /* эти элементы radio/checkbox всегда должны быть скрыты */
   .accordion-toggle {
     position: absolute;
     display: none;
-  }
-
-  .accordion-toggle:checked ~ .icon {
-    transform: rotate(90deg) !important;
   }
 
   /* скрытое содержание аккордеона */

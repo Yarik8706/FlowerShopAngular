@@ -1,1 +1,41 @@
-<p>admin-panel works!</p>
+<div class="container">
+  <h1 class="main-title">Панель администратора</h1>
+  <h2 class="color-title">Создание нового товара</h2>
+  <form class="new-product-form">
+    <div class="mb-3">
+      <mat-form-field class="new-product-title" appearance="fill">
+        <mat-label>Название</mat-label>
+        <input matInput [(ngModel)]="title" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="new-product-form-textarea" appearance="fill">
+        <mat-label>Краткое описание</mat-label>
+        <textarea matInput [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="Какое-то краткое описание..."></textarea>
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="new-product-form-textarea" appearance="fill">
+        <mat-label>Полное описание</mat-label>
+        <textarea matInput [(ngModel)]="shortDescription" [ngModelOptions]="{standalone: true}" placeholder="Какое-то полное описание..."></textarea>
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="new-product-title" appearance="fill">
+        <mat-label>Цена</mat-label>
+        <input matInput [(ngModel)]="price" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-checkbox [(ngModel)]="isHit">Это хит?</mat-checkbox>
+    </div>
+    <div class="mb-3">
+      <app-get-user-image (imageSourceEvent)="imageSources = $event"></app-get-user-image>
+    </div>
+    <div class="mb-3">
+      <div class="col">
+        <button mat-raised-button color="accent" (click)="createProduct()">Создать</button>
+      </div>
+    </div>
+  </form>
+</div>

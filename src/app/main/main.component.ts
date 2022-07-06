@@ -1,6 +1,11 @@
 import {Component, Injector} from '@angular/core';
 import {UnitComponent} from "../unit/unit.component";
-import {InformationCard} from "../information-card";
+
+export interface InformationNews {
+  img: string,
+  title: string,
+  shortDescription: string
+}
 
 @Component({
   selector: 'app-main',
@@ -9,7 +14,7 @@ import {InformationCard} from "../information-card";
 })
 export class MainComponent extends UnitComponent {
 
-  images: InformationCard[] = [
+  images: InformationNews[] = [
     {img: "https://gorcveti.tomsk.ru/assets/img/main-banner/06-min.png", title: "Описание новости магазина", shortDescription: "Описание"},
     {img: "../../assets/image_1.jpg", title: "Описание новости магазина", shortDescription: "Описание"},
     {img: "../../assets/image_2.jpg", title: "Описание новости магазина", shortDescription: "Описание"}

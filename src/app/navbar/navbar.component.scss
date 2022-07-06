@@ -48,8 +48,6 @@
 }
 
 .navbar-icon{
-  display: flex;
-  justify-content: right;
   font-size: 28px;
 }
 
@@ -101,6 +99,25 @@
     width: 20%;
     height: 100%;
     background-color: rgba(44, 39, 39, 0.64);
+  }
+}
+
+.accordion-trigger.black-top-border {
+  border-top: $black-accent-color solid 1px !important;
+}
+
+.accordion-trigger.accordion-trigger-phone {
+  padding: 10px;
+
+  .menu-phone-icon {
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
+  .col{
+    .row:first-of-type {
+      margin-bottom: 5px;
+    }
   }
 }
 

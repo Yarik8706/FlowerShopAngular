@@ -10,12 +10,7 @@ import {InformationCard} from "./information-card";
 export class AppComponent extends UnitComponent {
   title = 'FlowerShopAngular';
 
-  ngOnInit(): void {
-    this.store.collection<InformationCard>('news').doc().set({
-      title: "fff",
-      description: "fff"
-    });
-  }
+  ngOnInit(): void {}
 
   constructor(injector: Injector) {
     super(injector);

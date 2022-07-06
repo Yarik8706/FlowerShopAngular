@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "colors";
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+$small-display-size: 490px;
 
 html, body {
   height: 100%;
@@ -18,37 +22,42 @@ body {
 
 button[color="accent"]{
   background-color: $accent-color !important;
+  font-size: medium;
 }
 
 .color-title{
+  font-size: 29px;
+  font-weight: 600;
+  line-height: 29px;
+  letter-spacing: .05em;
   color: $accent-color;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 20px;
+  margin: 10px;
 }
 
 .main-title{
-  text-align: center;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 25px;
+  color: $black-accent-color;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: .02em;
+  margin: 10px;
 }
 
-.div-left{
-  display: flex;
-  margin-right: 10px;
-  margin-left: 10px;
-  justify-content: left;
-}
-
-.div-center{
+.loader-spinner{
   display: flex;
   justify-content: center;
+  width: 75px;
+  height: 75px;
 }
 
-.div-right{
-  display: flex;
-  justify-content: right;
+@media (max-width: $small-display-size){
+  .color-title{
+    font-size: 22px;
+  }
+
+  .main-title{
+    font-size: 23px;
+  }
 }
 
 @mixin small-display{
@@ -69,5 +78,4 @@ button[color="accent"]{
   }
 }
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+

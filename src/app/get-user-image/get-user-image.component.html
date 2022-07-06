@@ -1,0 +1,17 @@
+<div class="mb-3">
+  <div class="col">
+    <button mat-raised-button color="accent" (click)="inputTours.click()">Загрузить фотографию</button>
+    <span class="note-text">*первая фотография будет основной</span>
+  </div>
+  <input [type]="'file'" #inputTours (change)="uploadEvent($event)" [multiple]="true" class="upload-file-input" [accept]="'.png,.jpeg,.jpg'">
+  <div class="preview" id="preview" >
+    <div class="preview-image" *ngFor="let img of imageSources">
+      <div class="preview-remove" (click)="removeEvent(img.name)">&times;</div>
+      <img src="{{img.src}}" alt="{{img.name}}">
+      <div class="preview-info">
+        <span>{{img.name}}</span>
+        {{img.size}}
+      </div>
+    </div>
+  </div>
+</div>
