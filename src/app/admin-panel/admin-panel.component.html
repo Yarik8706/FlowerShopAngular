@@ -27,7 +27,7 @@
       </mat-form-field>
     </div>
     <div class="mb-3">
-      <mat-checkbox [(ngModel)]="isHit">Это хит?</mat-checkbox>
+      <mat-checkbox [(ngModel)]="isHit" [ngModelOptions]="{standalone: true}">Это хит?</mat-checkbox>
     </div>
     <div class="mb-3">
       <app-get-user-image (imageSourceEvent)="imageSources = $event"></app-get-user-image>
@@ -39,3 +39,18 @@
     </div>
   </form>
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Успешно!</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <p>Новый товар успешно создан! Вы можете посмотреть его на гланой странице.</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button color="accent" (click)="modal.close()">Закрыть</button>
+  </div>
+</ng-template>

@@ -2,6 +2,7 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {InformationCardsService} from "../information-cards.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-unit',
@@ -12,9 +13,11 @@ export class UnitComponent implements OnInit {
   public informationCardsService: InformationCardsService;
   public store: AngularFirestore;
   public router: Router;
+  public modalService: NgbModal;
 
   constructor(injector: Injector)
   {
+    this.modalService = injector.get(NgbModal);
     this.router = injector.get(Router);
     this.store = injector.get(AngularFirestore);
     this.informationCardsService = injector.get(InformationCardsService)

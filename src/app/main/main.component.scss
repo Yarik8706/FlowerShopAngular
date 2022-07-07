@@ -1,7 +1,16 @@
 @import "../../styles";
 @import "../../colors";
+@import "../../accordion";
+
+.main-accordion {
+  margin: 20px;
+}
 
 ngb-carousel {
+  img {
+    height: 500px;
+  }
+
   .carousel-caption{
     background-color: white;
     justify-content: left;

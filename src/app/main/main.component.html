@@ -12,5 +12,45 @@
   </ng-template>
 </ngb-carousel>
 <div class="container main">
+  <ul class="accordion main-accordion">
+    <li class="accordion-item">
+      <input type="checkbox" class="accordion-toggle" name="accordion-01" id="toggle-01" hidden>
+      <label class="accordion-trigger main-accordion-trigger" for="toggle-01">
+        <div class="accordion-title-container">
+          <span class="title">Каталог...</span>
+        </div>
+      </label>
+      <div class="accordion-container">
+        <ul class="accordion">
+          <li class="accordion-item">
+            <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle2" hidden>
+            <label class="accordion-trigger" for="toggle2">
+              <div class="accordion-title-container">
+                <span class="title">Букеты...</span>
+              </div>
+            </label>
+            <div class="accordion-container">
+              <span class="accordion-trigger" [routerLink]="''">Премиум-букеты</span>
+              <span class="accordion-trigger" [routerLink]="''">Сборные букеты</span>
+              <span class="accordion-trigger" [routerLink]="''">С гвоздиками</span>
+            </div>
+          </li>
+        </ul>
+        <ul class="accordion">
+          <li class="accordion-item">
+            <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle3" hidden>
+            <label class="accordion-trigger" for="toggle3">Воздушные шарики...</label>
+            <div class="accordion-container">
+              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+            </div>
+          </li>
+        </ul>
+        <span class="accordion-trigger" [routerLink]="'about-us'">Плюшевые мишки</span>
+        <span class="accordion-trigger" [routerLink]="''">Сладости</span>
+      </div>
+    </li>
+  </ul>
   <app-cards-group></app-cards-group>
 </div>

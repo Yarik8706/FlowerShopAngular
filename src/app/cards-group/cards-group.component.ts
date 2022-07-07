@@ -12,6 +12,8 @@ export class CardsGroupComponent extends UnitComponent {
   public all_products: InformationCard[] = [];
   public isOpenFilterDialog: boolean = false;
   public isLoading: boolean = true;
+  public priceFrom: number;
+  public priceTo: number;
 
   constructor(private injector: Injector) {
     super(injector);

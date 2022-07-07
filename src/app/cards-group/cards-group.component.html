@@ -1,115 +1,96 @@
-<div class="container cards-group">
-  <ul class="accordion">
-    <li class="accordion-item">
-      <input type="checkbox" class="accordion-toggle" name="accordion-01" id="toggle-01" hidden>
-      <label class="accordion-trigger main-accordion-trigger" for="toggle-01">
-        <div class="title-container">
-          <span class="title">Каталог...</span>
+<div class="container">
+  <div class="cards-group">
+    <h1 class="color-title">ХИТЫ ПРОДАЖ</h1>
+    <div class="row button-group" *ngIf="SmallScreen()">
+      <button mat-raised-button color="accent" (click)="isOpenFilterDialog = true"><mat-icon>filter_list</mat-icon>Фильтры</button>
+      <button mat-raised-button color="accent" [matMenuTriggerFor]="sort_item"><mat-icon>sort</mat-icon>Сортировка</button>
+      <mat-menu #sort_item="matMenu">
+        <button mat-menu-item>Все товары</button>
+        <button mat-menu-item>Сначала недорогие</button>
+        <button mat-menu-item>Сначала дорогие</button>
+        <button mat-menu-item>АКЦИЯ</button>
+        <button mat-menu-item>ХИТ</button>
+      </mat-menu>
+    </div>
+    <div class="row">
+      <div class="list-group col-2 left-menu" *ngIf="!SmallScreen()">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Цена</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <mat-form-field class="col" appearance="fill">
+                <mat-label>От</mat-label>
+                <input matInput [(ngModel)]="priceFrom" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+              <span class="col">--</span>
+              <mat-form-field class="col" appearance="fill">
+                <mat-label>До</mat-label>
+                <input matInput [(ngModel)]="priceTo" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Состав букета</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col">
+              <mat-checkbox>Розы</mat-checkbox>
+              <mat-checkbox>Лилии</mat-checkbox>
+              <mat-checkbox>Тюльпаны</mat-checkbox>
+              <mat-checkbox>Хризантемы</mat-checkbox>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Для кого</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col">
+              <mat-checkbox>Коллеге</mat-checkbox>
+              <mat-checkbox>Маме</mat-checkbox>
+              <mat-checkbox>Подруге</mat-checkbox>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>По цвету</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col">
+              <mat-checkbox>Синии</mat-checkbox>
+              <mat-checkbox>Красные</mat-checkbox>
+              <mat-checkbox>Разноцветные</mat-checkbox>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Размер букета</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="col">
+              <mat-checkbox>Маленький</mat-checkbox>
+              <mat-checkbox>Стандарт</mat-checkbox>
+              <mat-checkbox>Большой</mat-checkbox>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="col px-4">
+        <div class="row" [ngStyle]="SmallScreen() ? {'justify-content' : 'center'} : {}">
+          <mat-spinner class="loader-spinner" *ngIf="isLoading"></mat-spinner>
+          <app-information-card *ngFor="let item of all_products; let index;" [title]="'Букет<<'+item.title+'>>'" [price]="item.price + 'р'" [img]="item.img[0].src"></app-information-card>
         </div>
-      </label>
-      <div class="accordion-container">
-        <ul class="accordion">
-          <li class="accordion-item">
-            <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle2" hidden>
-            <label class="accordion-trigger" for="toggle2">
-              <div class="title-container">
-                <span class="title">Цветы...</span>
-              </div>
-            </label>
-            <div class="accordion-container">
-              <span class="accordion-trigger" [routerLink]="''">Название цветка</span>
-              <span class="accordion-trigger" [routerLink]="''">Название цветка</span>
-              <span class="accordion-trigger" [routerLink]="''">Название цветка</span>
-            </div>
-          </li>
-        </ul>
-        <ul class="accordion">
-          <li class="accordion-item">
-            <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle3" hidden>
-            <label class="accordion-trigger" for="toggle3">Воздушные шарики...</label>
-            <div class="accordion-container">
-              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
-              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
-              <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
-            </div>
-          </li>
-        </ul>
-        <span class="accordion-trigger" [routerLink]="'about-us'">Плюшевые мишки</span>
-        <span class="accordion-trigger" [routerLink]="''">Сладости</span>
-      </div>
-    </li>
-  </ul>
-  <h1 class="color-title">ХИТЫ ПРОДАЖ</h1>
-  <div class="row button-group" *ngIf="SmallScreen()">
-    <button mat-raised-button color="accent" (click)="isOpenFilterDialog = true"><mat-icon>filter_list</mat-icon>Фильтры</button>
-    <button mat-raised-button color="accent" [matMenuTriggerFor]="sort_item"><mat-icon>sort</mat-icon>Сортировка</button>
-    <mat-menu #sort_item="matMenu">
-      <button mat-menu-item>Все товары</button>
-      <button mat-menu-item>Сначала недорогие</button>
-      <button mat-menu-item>Сначала дорогие</button>
-      <button mat-menu-item>АКЦИЯ</button>
-      <button mat-menu-item>ХИТ</button>
-    </mat-menu>
-  </div>
-  <div class="row">
-    <div class="list-group col-2 left-menu" *ngIf="!SmallScreen()">
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Состав букета</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="col">
-            <mat-checkbox>Розы</mat-checkbox>
-            <mat-checkbox>Лилии</mat-checkbox>
-            <mat-checkbox>Тюльпаны</mat-checkbox>
-            <mat-checkbox>Хризантемы</mat-checkbox>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Для кого</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="col">
-            <mat-checkbox>Коллеге</mat-checkbox>
-            <mat-checkbox>Маме</mat-checkbox>
-            <mat-checkbox>Подруге</mat-checkbox>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>По цвету</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="col">
-            <mat-checkbox>Синии</mat-checkbox>
-            <mat-checkbox>Красные</mat-checkbox>
-            <mat-checkbox>Разноцветные</mat-checkbox>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion>
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Размер букета</mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="col">
-            <mat-checkbox>Маленький</mat-checkbox>
-            <mat-checkbox>Стандарт</mat-checkbox>
-            <mat-checkbox>Большой</mat-checkbox>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div class="col px-4">
-      <div class="row" [ngStyle]="SmallScreen() ? {'justify-content' : 'center'} : {}">
-        <mat-spinner class="loader-spinner" *ngIf="isLoading"></mat-spinner>
-        <app-information-card *ngFor="let item of all_products; let index;" [title]="'Букет<<'+item.title+'>>'" [price]="item.price + 'р'" [img]="item.img[0].src"></app-information-card>
       </div>
     </div>
   </div>
+
 </div>
 <div class="filter-menu" *ngIf="isOpenFilterDialog">
   <div class="container">
@@ -122,6 +103,24 @@
       </div>
     </div>
     <div class="list-group col left-menu">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Цена</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <mat-form-field class="col" appearance="fill">
+              <mat-label>От</mat-label>
+              <input matInput [(ngModel)]="priceFrom" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            <span class="col">--</span>
+            <mat-form-field class="col" appearance="fill">
+              <mat-label>До</mat-label>
+              <input matInput [(ngModel)]="priceTo" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
       <mat-accordion>
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>

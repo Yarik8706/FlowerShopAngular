@@ -1,7 +1,8 @@
 <div class="navbar-padding-top" *ngIf="SmallScreen()"></div>
 <mat-toolbar class="custom-navbar start-navbar">
   <button mat-icon-button (click)="isOpenMenu = !isOpenMenu; updateMenuSetting()" *ngIf="SmallScreen()">
-    <mat-icon>menu</mat-icon>
+    <mat-icon *ngIf="!isOpenMenu">menu</mat-icon>
+    <mat-icon *ngIf="isOpenMenu">clear</mat-icon>
   </button>
   <button mat-icon-button *ngIf="SmallScreen()">
     <mat-icon>phone</mat-icon>
@@ -57,7 +58,7 @@
         <li class="accordion-item">
           <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle2" hidden>
           <label class="accordion-trigger" for="toggle2">
-            <div class="title-container"><span class="title">Букеты...</span></div>
+            <div class="accordion-title-container"><div class="accordion-title">Букеты</div></div>
           </label>
           <div class="accordion-container">
             <span class="accordion-trigger" [routerLink]="''">Сборные букеты</span>
@@ -65,11 +66,11 @@
             <span class="accordion-trigger" [routerLink]="''">Монобукеты</span>
           </div>
         </li>
-      </ul>
-      <ul class="accordion">
         <li class="accordion-item">
           <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle3" hidden>
-          <label class="accordion-trigger" for="toggle3">Воздушные шарики...</label>
+          <label class="accordion-trigger" for="toggle3">
+            <div class="accordion-title-container"><div class="accordion-title">Воздушные шарики</div></div>
+          </label>
           <div class="accordion-container">
             <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
             <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
