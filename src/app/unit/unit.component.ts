@@ -14,6 +14,7 @@ export class UnitComponent implements OnInit {
   public store: AngularFirestore;
   public router: Router;
   public modalService: NgbModal;
+  public access: boolean;
 
   constructor(injector: Injector)
   {
@@ -21,6 +22,7 @@ export class UnitComponent implements OnInit {
     this.router = injector.get(Router);
     this.store = injector.get(AngularFirestore);
     this.informationCardsService = injector.get(InformationCardsService)
+    this.access = localStorage.getItem("access") == "true";
   }
 
   ngOnInit(): void {

@@ -2,8 +2,12 @@
 @import "../../colors";
 @import "../../accordion";
 
-.cards-group{
+.cards-group-section{
   margin: 20px;
+}
+
+.cards-group-container {
+  margin-left: 5px;
 }
 
 .color-title{
@@ -58,6 +62,9 @@
 }
 
 @include small-display{
+  .cards-group-container {
+    margin: 0;
+  }
   .left-menu{
     mat-accordion{
       margin: 5px;

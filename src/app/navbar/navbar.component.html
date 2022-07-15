@@ -1,5 +1,16 @@
 <div class="navbar-padding-top" *ngIf="SmallScreen()"></div>
-<mat-toolbar class="custom-navbar start-navbar">
+<mat-toolbar class="up-navbar" color="accent" *ngIf="!SmallScreen()">
+  <div class="up-navbar-button-container">
+    <button mat-raised-button color="accent" class="up-navbar-button" routerLink="">Главная</button>
+    <button mat-raised-button color="accent" class="up-navbar-button" routerLink="">Цветы</button>
+    <button mat-raised-button color="accent" class="up-navbar-button" routerLink="">Шары</button>
+    <button mat-raised-button color="accent" class="up-navbar-button" routerLink="">Фруктовые корзины</button>
+    <button mat-raised-button color="accent" class="up-navbar-button" routerLink="">Подарки, дополнения</button>
+    <button mat-raised-button color="accent" class="up-navbar-button" routerLink="about-us">О нас</button>
+    <button mat-raised-button color="accent" class="up-navbar-button" *ngIf="access" routerLink="admin-panel">Панель администротора</button>
+  </div>
+</mat-toolbar>
+<mat-toolbar class="custom-navbar main-navbar">
   <button mat-icon-button (click)="isOpenMenu = !isOpenMenu; updateMenuSetting()" *ngIf="SmallScreen()">
     <mat-icon *ngIf="!isOpenMenu">menu</mat-icon>
     <mat-icon *ngIf="isOpenMenu">clear</mat-icon>
@@ -40,47 +51,72 @@
     </div>
   </div>
 </mat-toolbar>
-<mat-toolbar color="accent" class="custom-navbar end-navbar">
-  <div style="margin: 0 auto;">
-    <span class="main-title" style="text-align: center; color: white;">Краткое описание</span>
+<mat-toolbar color="accent" class="navbar-title-container">
+  <div class="navbar-title-inner">
+    <div class="navbar-title">Краткое описание</div>
   </div>
 </mat-toolbar>
 <div class="left-menu" *ngIf="isOpenMenu && SmallScreen()">
   <div class="main">
     <div class="navbar-padding-top" *ngIf="SmallScreen()"></div>
-      <span class="accordion-trigger black-top-border" [routerLink]="''">Пионы</span>
-      <span class="accordion-trigger" [routerLink]="''">Акции</span>
-      <span class="accordion-trigger" [routerLink]="''">Цветы до 2000р.</span>
-      <span class="accordion-trigger" [routerLink]="''">Эко-букеты</span>
-      <span class="accordion-trigger" [routerLink]="''">Пионы</span>
-      <span class="accordion-trigger" [routerLink]="''">Розы</span>
       <ul class="accordion">
         <li class="accordion-item">
-          <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle2" hidden>
-          <label class="accordion-trigger" for="toggle2">
-            <div class="accordion-title-container"><div class="accordion-title">Букеты</div></div>
+          <input type="checkbox" class="accordion-toggle" name="left-menu-item-list-1" id="toggle1" hidden>
+          <label class="accordion-trigger" for="toggle1">
+            <div class="accordion-title-container"><div class="accordion-title">Цветы</div></div>
           </label>
           <div class="accordion-container">
-            <span class="accordion-trigger" [routerLink]="''">Сборные букеты</span>
-            <span class="accordion-trigger" [routerLink]="''">Премиум букеты</span>
+            <span class="accordion-trigger" [routerLink]="''">Хиты продаж</span>
+            <span class="accordion-trigger" [routerLink]="''">Все букеты</span>
             <span class="accordion-trigger" [routerLink]="''">Монобукеты</span>
+            <span class="accordion-trigger" [routerLink]="''">Сборные букеты</span>
+            <span class="accordion-trigger" [routerLink]="''">Композиции</span>
+            <span class="accordion-trigger" [routerLink]="''">Из сухоцветов</span>
           </div>
         </li>
         <li class="accordion-item">
-          <input type="checkbox" class="accordion-toggle" name="accordion-02" id="toggle3" hidden>
-          <label class="accordion-trigger" for="toggle3">
-            <div class="accordion-title-container"><div class="accordion-title">Воздушные шарики</div></div>
+          <input type="checkbox" class="accordion-toggle" name="left-menu-item-list-1" id="toggle4" hidden>
+          <label class="accordion-trigger" for="toggle4">
+            <div class="accordion-title-container"><div class="accordion-title">Шары</div></div>
           </label>
           <div class="accordion-container">
-            <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
-            <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
-            <span class="accordion-trigger" [routerLink]="''">Название шарика</span>
+            <span class="accordion-trigger" [routerLink]="''">Готовые решения</span>
+            <span class="accordion-trigger" [routerLink]="''">Латесные шары</span>
+            <span class="accordion-trigger" [routerLink]="''">Фольгированные шары цифры</span>
+            <span class="accordion-trigger" [routerLink]="''">Фольгированные шары фигуры</span>
+          </div>
+        </li>
+        <li class="accordion-item">
+          <input type="checkbox" class="accordion-toggle" name="left-menu-item-list-1" id="toggle2" hidden>
+          <label class="accordion-trigger" for="toggle2">
+            <div class="accordion-title-container"><div class="accordion-title">Фруктовые корзины</div></div>
+          </label>
+          <div class="accordion-container">
+            <span class="accordion-trigger" [routerLink]="''">Фрукты в корзине</span>
+            <span class="accordion-trigger" [routerLink]="''">Фрукты в коробке</span>
+            <span class="accordion-trigger" [routerLink]="''">Сухофрукты в коробке</span>
+          </div>
+        </li>
+        <li class="accordion-item">
+          <input type="checkbox" class="accordion-toggle" name="left-menu-item-list-1" id="toggle3" hidden>
+          <label class="accordion-trigger" for="toggle3">
+            <div class="accordion-title-container"><div class="accordion-title">Подарки, дополнения</div></div>
+          </label>
+          <div class="accordion-container">
+            <span class="accordion-trigger" [routerLink]="''">Топперы</span>
+            <span class="accordion-trigger" [routerLink]="''">Открытки</span>
+            <span class="accordion-trigger" [routerLink]="''">Конверты для денег</span>
+            <span class="accordion-trigger" [routerLink]="''">Карточки</span>
+            <span class="accordion-trigger" [routerLink]="''">Плюшевые медведи</span>
+            <span class="accordion-trigger" [routerLink]="''">Конфеты</span>
+            <span class="accordion-trigger" [routerLink]="''">Шоколад</span>
+            <span class="accordion-trigger" [routerLink]="''">Торты</span>
+            <span class="accordion-trigger" [routerLink]="''">Пирожные</span>
           </div>
         </li>
       </ul>
       <div class="divider"></div>
       <span class="accordion-trigger black-top-border" [routerLink]="'about-us'" (click)="isOpenMenu = false; updateMenuSetting()">О нас</span>
-      <span class="accordion-trigger" [routerLink]="''">Доставка</span>
       <span class="accordion-trigger" [routerLink]="'admin-panel'" (click)="isOpenMenu = false; updateMenuSetting()">Панель администратора</span>
       <span class="accordion-trigger accordion-trigger-phone" [routerLink]="''">
         <span class="col">

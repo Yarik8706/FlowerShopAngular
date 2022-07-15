@@ -2,7 +2,24 @@
 @import "../../colors";
 @import "../../accordion";
 
-.custom-navbar{
+.up-navbar {
+  padding: 3px !important;
+  background-color: $accent-color !important;
+  height: auto !important;
+}
+
+.up-navbar-button-container {
+  margin-left: 100px;
+}
+
+.up-navbar-button {
+  margin-right: 20px;
+}
+
+.main-navbar{
+  margin-left: 100px;
+  height: 150px;
+  background-color: white;
   .logo{
     margin: 20px;
     img{
@@ -17,30 +34,22 @@
   }
 }
 
-.navbar-buttons-group{
-  button{
-    text-align: center !important;
-  }
-}
+.navbar-title-container{
 
-.start-navbar{
-  height: 150px;
-  background-color: white;
-}
-
-.main-title{
-  font-weight: 800;
-}
-
-.color-title{
-  font-size: 22px;
-}
-
-.end-navbar{
   box-shadow: 0 1px 5px rgba(0,0,0,.2);
   box-sizing: border-box;
   background-color: $accent-color !important;
   outline: 0;
+}
+
+.navbar-title-inner {
+  margin-left: 100px;
+}
+
+.navbar-title {
+  font-weight: 600;
+  font-style: italic;
+  font-size: x-large;
 }
 
 .content-group-right{
@@ -126,13 +135,7 @@
 }
 
 @include small-display{
-
-
-  mat-toolbar{
-    padding: 0 !important;
-  }
-
-  .start-navbar{
+  .main-navbar{
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -155,9 +158,5 @@
         margin: 0 auto;
       }
     }
-  }
-
-  .end-navbar{
-    height: 60px;
   }
 }

@@ -1,0 +1,36 @@
+@import "../../styles";
+
+$image-size-big-display: 400px;
+$image-size-small-display: 300px;
+
+.product-container {
+  margin-top: 20px;
+}
+
+.product-title {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.product-image {
+  width: $image-size-big-display;
+  height: $image-size-big-display;
+}
+
+.product-image-inner {
+  position: relative;
+  width: 100%;
+  height: $image-size-big-display;
+}
+
+@include small-display{
+  .product-image {
+    width: $image-size-small-display;
+    height: $image-size-small-display;
+  }
+
+  .product-image-inner {
+    height: $image-size-small-display;
+  }
+}

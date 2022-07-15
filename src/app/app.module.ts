@@ -23,7 +23,6 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CardsGroupComponent } from './cards-group/cards-group.component';
-import { AllProductsComponent } from './all-products/all-products.component';
 import {InformationCardsService} from "./information-cards.service";
 import { TransitionToInformationComponent } from './transition-to-information/transition-to-information.component';
 import { InformationProductComponent } from './information-product/information-product.component';
@@ -51,8 +50,15 @@ const routes: Routes = [
       component: CardsGroupComponent
     }]
   },
+  {
+    path: 'product',
+    children: [{
+      path: '**',
+      component: InformationProductComponent
+    }]
+  },
   { path: 'admin-panel', component: AdminPanelComponent},
-  { path: '**', component: MainComponent}
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
@@ -65,7 +71,6 @@ const routes: Routes = [
     InformationCardComponent,
     AboutUsComponent,
     CardsGroupComponent,
-    AllProductsComponent,
     TransitionToInformationComponent,
     InformationProductComponent,
     AdminPanelComponent,

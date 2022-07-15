@@ -23,6 +23,7 @@ export class CardsGroupComponent extends UnitComponent {
     this.store.collection<InformationCard>('products').get().subscribe(data => {
       data.forEach(dataTour => {
         let tour = dataTour.data();
+        tour.id = dataTour.id;
         this.all_products.push(tour);
       })
       this.isLoading = false;

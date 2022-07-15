@@ -22,7 +22,9 @@ export class AdminPanelComponent extends UnitComponent {
     super(injector)
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.setItem("access", "true");
+  }
 
   public createProduct():void {
     let item: InformationCard = {

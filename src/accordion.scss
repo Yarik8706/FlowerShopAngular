@@ -75,14 +75,14 @@
     animation:fadeIn ease-in 0.5s;
   }
 
-  & .accordion-item .accordion-trigger .accordion-title-container:after {
+  .accordion-item .accordion-trigger .accordion-title-container:after {
     content: "";
     display: block;
     width: 16px;
     height: 16px;
 
-    border-top: 2px solid gray;
-    border-right: 2px solid gray;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
 
     position: absolute;
     top: 50%;
@@ -93,8 +93,8 @@
     transition: rotate 1s linear;
   }
 
-  .accordion-toggle:checked ~ & .accordion-item .accordion-trigger .accordion-title-container:after {
-    transform: translateY(-50%) rotate(-45deg);
+  .accordion-toggle:checked .accordion-item .accordion-trigger .accordion-title-container:after {
+    transform: translateY(-50%) rotate(45deg) !important;
     margin-top: 5px;
   }
 

@@ -1,1 +1,30 @@
-<p>information-product works!</p>
+<div class="product-container container">
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <div class="spinner-border text-warning" role="status">
+      <span class="visually-hidden"></span>
+    </div>
+  </div>
+  <div class="product-information row">
+    <div class="col">
+      <div class="product-image-inner">
+        <ngb-carousel [interval]="3000" [pauseOnHover]="'true'" [pauseOnFocus]="'true'">
+          <ng-template ngbSlide *ngFor="let img of informationCard.img; index as i">
+            <div class="product-image">
+              <img [src]="informationCard.img[i].src" alt="">
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+    <div class="col">
+      <div class="product-title">{{informationCard.title}}</div>
+      <div class="product-price-inner">Стоимость: <div class="product-price">{{informationCard.price}}</div></div>
+      <div class="product-description">
+        <h2 class="product-description-title"></h2>
+        <p class="product-description-text">
+          {{informationCard.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

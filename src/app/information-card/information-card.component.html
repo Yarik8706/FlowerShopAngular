@@ -1,15 +1,107 @@
-<mat-card class="information-card">
+<mat-card class="information-card" [ngStyle]="isDelete ? {'display' : 'none'} : {}">
   <img mat-card-image
        class="information-card-image"
-       [src]="img"
+       [src]="informationCard.img[0].src"
        alt="">
   <mat-card-header>
-    <mat-card-title>{{title}}</mat-card-title>
-    <mat-card-subtitle>{{price}}</mat-card-subtitle>
+    <mat-card-title>{{informationCard.title}}</mat-card-title>
+    <mat-card-subtitle>{{informationCard.price}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions class="information-card-buttons">
     <button mat-button>Заказать</button>
-    <button mat-button>Подробности</button>
+    <button mat-button routerLink="product/{{informationCard.id}}">Подробности</button>
+    <button mat-button *ngIf="access" (click)="openEditForm()">Изменить</button>
+    <button mat-button *ngIf="access" (click)="openDeleteModal()">Удалить</button>
   </mat-card-actions>
 </mat-card>
-
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Удаление продукта</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <p>Вы уверенны что хотите удалить данный продукт?</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button color="accent" (click)="modal.close(); deleteCard();">Удалить</button>
+    <button mat-raised-button color="accent" (click)="modal.close();">Отмена</button>
+  </div>
+</ng-template>
+<ng-template #deleteSuccess let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Успешно!</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <p>Удаление прошло успешно!</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button color="accent" (click)="modal.close();">Закрыть</button>
+  </div>
+</ng-template>
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Изменение продукта</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="mb-3">
+          <mat-form-field class="new-product-title" appearance="fill">
+            <mat-label>Название</mat-label>
+            <input matInput [(ngModel)]="informationCard.title" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field class="edit-form" appearance="fill">
+            <mat-label>Цена</mat-label>
+            <input matInput [(ngModel)]="informationCard.price" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field class="new-product-form-textarea" appearance="fill">
+            <mat-label>Краткое описание</mat-label>
+            <textarea matInput [(ngModel)]="informationCard.description" [ngModelOptions]="{standalone: true}" placeholder="Какое-то краткое описание..."></textarea>
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field class="new-product-form-textarea" appearance="fill">
+            <mat-label>Полное описание</mat-label>
+            <textarea matInput [(ngModel)]="informationCard.shortDescription" [ngModelOptions]="{standalone: true}" placeholder="Какое-то полное описание..."></textarea>
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-checkbox [(ngModel)]="informationCard.hit" [ngModelOptions]="{standalone: true}">Это хит?</mat-checkbox>
+        </div>
+        <div class="mb-3">
+          <app-get-user-image (imageSourceEvent)="informationCard.img = $event"></app-get-user-image>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button color="accent" (click)="modal.close(); editCard();">Изменить</button>
+    <button mat-raised-button color="accent" (click)="modal.close();">Отмена</button>
+  </div>
+</ng-template>
+<ng-template #editSuccess let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Успешно!</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <p>Изменение прошло успешно!</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button color="accent" (click)="modal.close(); reloadPage();">Закрыть</button>
+  </div>
+</ng-template>
